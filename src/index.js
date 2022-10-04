@@ -20,7 +20,11 @@ export const school = {
     7: new Student('Ivan', [76, 89, 78, 98, 98, 99, 89, 96]),
   },
   get aGradeStudents() {
-    console.log(this.students.get());
+    const arrayOfStudents = Object.values(this.students);
+    console.log(arrayOfStudents);
+    for (let iterator = 0; iterator < arrayOfStudents.length; iterator++) {
+      console.log(arrayOfStudents[iterator]);
+    }
   },
   get bGradeStudents() {},
   get cGradeStudents() {},
