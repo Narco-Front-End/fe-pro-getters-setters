@@ -21,12 +21,30 @@ export const school = {
   },
   get aGradeStudents() {
     const arrayOfStudents = Object.values(this.students);
-    console.log(arrayOfStudents);
-    for (let iterator = 0; iterator < arrayOfStudents.length; iterator++) {
-      console.log(arrayOfStudents[iterator]);
-    }
+    return arrayOfStudents
+      .filter((item) => item.averageGrade > 90)
+      .map((item) => item.name)
+      .join(', ');
   },
-  get bGradeStudents() {},
-  get cGradeStudents() {},
-  get dGradeStudents() {},
+  get bGradeStudents() {
+    const arrayOfStudents = Object.values(this.students);
+    return arrayOfStudents
+      .filter((item) => item.averageGrade <= 89 && item.averageGrade >= 75)
+      .map((item) => item.name)
+      .join(', ');
+  },
+  get cGradeStudents() {
+    const arrayOfStudents = Object.values(this.students);
+    return arrayOfStudents
+      .filter((item) => item.averageGrade <= 74 && item.averageGrade >= 60)
+      .map((item) => item.name)
+      .join(', ');
+  },
+  get dGradeStudents() {
+    const arrayOfStudents = Object.values(this.students);
+    return arrayOfStudents
+      .filter((item) => item.averageGrade <= 59 && item.averageGrade >= 0)
+      .map((item) => item.name)
+      .join(', ');
+  },
 };
