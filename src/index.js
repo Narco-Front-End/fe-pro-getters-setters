@@ -1,7 +1,6 @@
 function Student(name, grades) {
   this.name = name;
   this.grades = grades;
-
   Object.defineProperty(this, 'averageGrade', {
     get() {
       return this.grades.reduce((acc, curr) => acc + curr) / this.grades.length;
@@ -19,5 +18,33 @@ export const school = {
     5: new Student('Bohdan', [67, 25, 87, 34, 25, 76]),
     6: new Student('Eugene', [97, 34, 78, 85, 98, 65]),
     7: new Student('Ivan', [76, 89, 78, 98, 98, 99, 89, 96]),
+  },
+  get aGradeStudents() {
+    const arrayOfStudents = Object.values(this.students);
+    return arrayOfStudents
+      .filter((item) => item.averageGrade > 90)
+      .map((item) => item.name)
+      .join(', ');
+  },
+  get bGradeStudents() {
+    const arrayOfStudents = Object.values(this.students);
+    return arrayOfStudents
+      .filter((item) => item.averageGrade <= 89 && item.averageGrade >= 75)
+      .map((item) => item.name)
+      .join(', ');
+  },
+  get cGradeStudents() {
+    const arrayOfStudents = Object.values(this.students);
+    return arrayOfStudents
+      .filter((item) => item.averageGrade <= 74 && item.averageGrade >= 60)
+      .map((item) => item.name)
+      .join(', ');
+  },
+  get dGradeStudents() {
+    const arrayOfStudents = Object.values(this.students);
+    return arrayOfStudents
+      .filter((item) => item.averageGrade <= 59 && item.averageGrade >= 0)
+      .map((item) => item.name)
+      .join(', ');
   },
 };
